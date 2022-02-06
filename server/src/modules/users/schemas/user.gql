@@ -1,0 +1,17 @@
+scalar Date
+
+type User {
+  id: ID!
+  username: String!
+  isOnline: Boolean!
+  lastView: Date!
+}
+
+type Query {
+  getUsers: [User!]
+}
+
+type Subscription {
+  userJoin: User!
+  userLeft: User!
+}

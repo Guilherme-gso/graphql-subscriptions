@@ -1,0 +1,25 @@
+scalar Date
+
+type Message {
+  id: ID!
+  user: String!
+  content: String!
+  dateAt: Date!
+}
+
+input PostMessage {
+  user: String!
+  content: String!
+}
+
+type Query {
+  getMessages: [Message!]
+}
+
+type Mutation {
+  postMessage(message: PostMessage!): Message!
+}
+
+type Subscription {
+  newMessage: Message!
+}
