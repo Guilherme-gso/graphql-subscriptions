@@ -5,7 +5,7 @@ export const Chat = (): JSX.Element => {
   const {
     messages,
     sendMessage,
-    getMessagesPayload,
+    isLoadingMessages,
     postMessagePayload
   } = useMessage()
   const [message, setMessage] = useState('')
@@ -25,7 +25,7 @@ export const Chat = (): JSX.Element => {
 
   return (
     <>
-      {getMessagesPayload.loading ? (
+      {isLoadingMessages ? (
         <h1>Loading Messages...</h1>
       ) : (
         messages.map(message => (

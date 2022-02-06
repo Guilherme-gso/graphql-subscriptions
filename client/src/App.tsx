@@ -1,11 +1,13 @@
 import { ApolloProvider } from '@apollo/client'
-import { Chat } from './components/Chat'
-import { client } from './graphql'
+import { useGraphqlClient } from './hooks/useGraphqlClient'
+import { AppRoutes } from './routes'
 
 export const App = (): JSX.Element => {
+  const { client } = useGraphqlClient()
+
   return (
     <ApolloProvider client={client}>
-      <Chat />
+      <AppRoutes />
     </ApolloProvider>
   )
 }

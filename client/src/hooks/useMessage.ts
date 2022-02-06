@@ -9,14 +9,11 @@ export const useMessage = () => {
   const [postMessage, postMessagePayload] = useMutation<{ postMessage: Message }>(
     mutations.POST_MESSAGE
   )
-  
-  const { data: messageData } = 
+
+  const { data: messageData, loading: isLoadingMessages } = 
     useQuery<{ getMessages: Message[] }>(queries.GET_MESSAGES)
 
-  const { 
-    data: newMessageData, 
-    ...getMessagesPayload 
-  } = useSubscription(subscriptions.NEW_MESSAGE)
+  const { data: newMessageData } = useSubscription(subscriptions.NEW_MESSAGE)
 
   function sendMessage(message: PostMessageVariables): void {
     postMessage({ variables: { message } })
@@ -42,6 +39,6 @@ export const useMessage = () => {
     sendMessage,
     messages,
     postMessagePayload,
-    getMessagesPayload
+    isLoadingMessages,
   }
 }
